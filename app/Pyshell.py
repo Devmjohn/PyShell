@@ -1,10 +1,10 @@
 import os
 import sys
-from os import chdir, getcwd
+from os import chdir, getcwd, listdir
 from os.path import expanduser
 
 # Define shell built-in commands
-builtin_cmds = ["echo", "exit", "type", "pwd", "cd", "clear", "about"]
+builtin_cmds = ["echo", "exit", "type", "pwd", "cd", "clear", "about", "ls"]
 
 # Get system PATH
 PATH = os.getenv("PATH", "")
@@ -29,7 +29,6 @@ def main():
 ██╔═══╝░░░╚██╔╝░░░╚═══██╗██╔══██║██╔══╝░░██║░░░░░██║░░░░░
 ██║░░░░░░░░██║░░░██████╔╝██║░░██║███████╗███████╗███████╗
 ╚═╝░░░░░░░░╚═╝░░░╚═════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚══════╝
-
 
 ---------------------------------
 | Created By: Dev M John        |
@@ -57,35 +56,23 @@ def main():
             elif cmd == "echo":
                 print(" ".join(args))
             elif cmd == "pwd":
-                # Print the current working directory
                 print(getcwd())
             elif cmd == "cd":
                 if not args:
-                    # Default to the user's home directory if no argument is provided
                     directory = expanduser("~")
                 else:
                     directory = args[0]
                 try:
-                    # Change directory and handle errors
                     chdir(expanduser(directory))
                 except OSError:
                     print(f"cd: {directory}: No such file or directory")
             elif cmd == "clear":
                 os.system("cls" if os.name == "nt" else "clear")
-            elif cmd == "about":
-                os.system("cls" if os.name == "nt" else "clear")
-                print("""
-\033[31m██████╗░██╗░░░██╗░██████╗██╗░░██╗███████╗██╗░░░░░██╗░░░░░\033[0m
-\033[31m██╔══██╗╚██╗░██╔╝██╔════╝██║░░██║██╔════╝██║░░░░░██║░░░░░\033[0m
-\033[33m██████╔╝░╚████╔╝░╚█████╗░███████║█████╗░░██║░░░░░██║░░░░░\033[0m
-\033[32m██╔═══╝░░░╚██╔╝░░░╚═══██╗██╔══██║██╔══╝░░██║░░░░░██║░░░░░\033[0m
-\033[32m██║░░░░░░░░██║░░░██████╔╝██║░░██║███████╗███████╗███████╗\033[0m
-\033[32m╚═╝░░░░░░░░╚═╝░░░╚═════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚══════╝\033[0m
-
-Created by \033[33mDev M John\033[0m
-LinkedIn: \033[33mlinkedin.com/in/devmjohn\033[0m
-GitHub: \033[33mgithub.com/devmjohn\033[0m
-""")
+            elif cmd == "ls":
+                try:
+                    print(" ".join(listdir(getcwd())))
+                except OSError:
+                    print("ls: error listing directory contents")
             elif cmd == "type":
                 if not args:
                     print("type: missing argument")
@@ -104,10 +91,8 @@ GitHub: \033[33mgithub.com/devmjohn\033[0m
                     if not found:
                         print(f"{target_cmd} not found")
             elif not is_command(cmd):
-                # If the command is not found, print the appropriate error
                 print(f"{cmd}: command not found")
             else:
-                # Execute valid commands
                 os.system(user_input)
         except KeyboardInterrupt:
             print("\nExiting shell. Goodbye!")
