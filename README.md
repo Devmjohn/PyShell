@@ -12,6 +12,9 @@ This project is a POSIX-compliant shell built in Python, capable of interpreting
 - Error handling for invalid commands
 - Cross-platform support (Linux, macOS, Windows)
 
+# Demo
+<img src="demo.png" alt="Demo" width="400">
+
 ## Requirements
 
 - Python 3 or above
@@ -26,7 +29,6 @@ cd PyShell
 ```
 
 ## Usage
-
 
 To Run the file on Windows/Mac OS/Linux OS
 
