@@ -2,12 +2,12 @@
 
 ## Overview
 
-This project is a POSIX-compliant shell built in Python, capable of interpreting shell commands, running external programs, and executing built-in commands like `cd`, `pwd`, `echo`, and more. Along the project, I learn about shell command parsing, REPLs (Read-Eval-Print Loop), built-in commands, and other key shell functionalities. The shell provides an interactive environment to execute commands efficiently.
+This project is a POSIX-compliant shell built in Python, capable of interpreting shell commands, running external programs, and executing built-in commands like `cd`,`ls`, `pwd`, `echo`, and more. Along the project, I learn about shell command parsing, REPLs (Read-Eval-Print Loop), built-in commands, and other key shell functionalities. The shell provides an interactive environment to execute commands efficiently.
 
 ## Features
 
 - Execute system shell commands
-- Built-in commands: `echo`, `pwd`, `cd`, `type`, `exit`
+- Built-in commands: `echo`,`ls`, `pwd`, `cd`, `type`, `exit`
 - Interactive command-line interface
 - Error handling for invalid commands
 - Cross-platform support (Linux, macOS, Windows)
